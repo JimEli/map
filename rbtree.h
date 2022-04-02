@@ -91,7 +91,6 @@ public:
     RBTree& operator =(const RBTree&) = delete;
     ~RBTree() { }
 
-public:
     void clear() 
     {
         _root = nullptr;
@@ -511,7 +510,6 @@ private:
         node->_parent = left;
     }
 
-private:
     Node_t* _root;
     size_t _size;
     Compare_t _compare;
