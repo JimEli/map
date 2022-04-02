@@ -5,14 +5,6 @@
 #include <utility>
 #include "rbtree.h"
 
-template
-<typename PairType, typename CompareType>
-struct PairCompare
-{
-    CompareType _compare;
-    int operator ()(const PairType& left, const PairType& right) const { return _compare(left.first, right.first); }
-};
-
 template<typename T>
 struct GenericCompare
 {
@@ -112,6 +104,14 @@ public:
 
 private:
     const Node_t* _node;
+};
+
+template
+<typename PairType, typename CompareType>
+struct PairCompare
+{
+    CompareType _compare;
+    int operator ()(const PairType& left, const PairType& right) const { return _compare(left.first, right.first); }
 };
 
 template
