@@ -4,8 +4,6 @@
 #include <new>
 #include <utility>
 #include "RBTree.h"
-//#include "HeapAllocator.h"
-#include "C:\Program Files (x86)\Visual Leak Detector\include\vld.h"
 
 template
 <typename PairType, typename CompareType>
@@ -118,8 +116,6 @@ private:
 
 template
 <typename KeyType, typename ValueType, typename CompareType=GenericCompare<KeyType>>
-//<typename KeyType, typename ValueType, typename CompareType>
-//<typename KeyType, typename ValueType, typename CompareType, typename AllocatorFamily = HeapAllocator<>>
 class Map
 {
     using Key_t = KeyType;
@@ -129,13 +125,11 @@ class Map
     using DataCompare_t = PairCompare<Data_t, Compare_t>;
     using Node_t = RBTreeNode<Data_t>;
     using Tree_t = RBTree<Node_t, DataCompare_t>;
-//    using Allocator_t = typename AllocatorFamily::template Rebind<sizeof(Node_t)>;
 
 public:
     using Iterator_t = MapIterator<Node_t> ;
     using ConstIterator_t = MapConstIterator<Node_t>;
 
-//    Map() { _allocator.initialize(); }
     Map() { }
     Map(const Map&) = delete;
     Map& operator =(const Map&) = delete;
@@ -143,7 +137,6 @@ public:
     {
         if (!empty())
             clear();
-//        _allocator.finalize(); 
     }
 
     void clear() 
@@ -202,8 +195,6 @@ public:
 private:
     Node_t* createNode() 
     {
-//        auto memory = _allocator.alloc();
-//        auto node = new(memory)Node_t();
         auto node = new Node_t();
 
         return node;
@@ -213,10 +204,8 @@ private:
     {
         node->~Node_t();
         delete node;
-//        _allocator.free(node);
     }
 
-//    Allocator_t _allocator;
     Tree_t _tree;
 };
 
