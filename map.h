@@ -3,7 +3,7 @@
 
 #include <new>
 #include <utility>
-#include "RBTree.h"
+#include "rbtree.h"
 
 template
 <typename PairType, typename CompareType>
