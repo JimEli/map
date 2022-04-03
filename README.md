@@ -1,2 +1,2 @@
 # map
-## A map based upon an underlying rbtree structure.
+## A basic map based upon an underlying rbtree structure.
