@@ -92,7 +92,6 @@ public:
         _node = _node->Forward();
         return *this;
     }
-
     MapConstIterator& operator++(int)
     {
         const auto node = _node->Forward();
@@ -196,7 +195,6 @@ private:
     Node_t* createNode() 
     {
         auto node = new Node_t();
-
         return node;
     }
 
